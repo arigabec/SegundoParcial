@@ -1,9 +1,9 @@
 package segundoParcial.E3;
 
 public interface IFacebook {
-    void suscribir(IUser observer);
+    void suscribir(Usuario observer);
 
-    void detach(IUser observer);
+    void detach(Usuario observer);
 
-    void notifyObservers(String msg);
+    void notifyObservers(String msg, String tipo);
 }

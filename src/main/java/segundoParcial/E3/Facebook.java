@@ -4,28 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Facebook implements IFacebook {
-    private List<IUser> observers = new ArrayList<>();
+    private List<Usuario> observers = new ArrayList<>();
 
     public Facebook(){}
 
-    public void sendNotificacion(String tipo){
-
+    public void sendNotificacion(String tipo, String msg){
+        this.notifyObservers(msg, tipo);
     }
 
     @Override
-    public void suscribir(IUser observer) {
+    public void suscribir(Usuario observer) {
         observers.add(observer);
     }
 
     @Override
-    public void detach(IUser observer) {
+    public void detach(Usuario observer) {
         observers.remove(observer);
     }
 
     @Override
-    public void notifyObservers(String msg) {
-        for (IUser obs : observers) {
-            obs.update("Info > " + msg);
+    public void notifyObservers(String msg, String tipo) {
+        if(tipo.equals("video")){
+            for (Usuario u:observers) {
+                if(u.getTipoNotificacion().equals("video")){
+                    u.update(msg);
+                }
+            }
+        } else if (tipo.equals("publicacion")){
+            for (Usuario u:observers) {
+                if(u.getTipoNotificacion().equals("publicacion")){
+                    u.update(msg);
+                }
+            }
         }
     }
 }
