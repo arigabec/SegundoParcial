@@ -1,5 +1,5 @@
 package segundoParcial.E5;
 
 public interface IEstado {
-    void handle();
+    void handle(Celular celular) throws InterruptedException;
 }

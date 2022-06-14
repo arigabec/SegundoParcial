@@ -1,30 +1,59 @@
 package segundoParcial.E5;
 
 public class Celular {
-    private String programasAbiertos;
-    private int memoria;
-    private int RAM;
-    private int CPU;
+    private int programasAbiertos;
+    private String memoria;
+    private String RAM;
+    private double CPU;
+    private IEstado state;
 
-    // private IEstado state = new ConcreteState1();
-
-    public Celular(){}
-
-
-
-    /* public void request(){
-        this.state.handle();
-    }*/
-
-    public void requestCS1(){
-        // Logica relacionada con el CS1
+    public Celular(){
+        state = new Apagado();
+        memoria = "8GB";
+        RAM = "4GB";
     }
 
-    public void requestCS2(){
-        // Logica relacionada con el CS2
+    public int getProgramasAbiertos() {
+        return programasAbiertos;
     }
 
-    public void requestCS3(){
-        // Logica relacionada con el CS3
+    public void setProgramasAbiertos(int programasAbiertos) {
+        this.programasAbiertos = programasAbiertos;
+    }
+
+    public String getMemoria() {
+        return memoria;
+    }
+
+    public void setMemoria(String memoria) {
+        this.memoria = memoria;
+    }
+
+    public String getRAM() {
+        return RAM;
+    }
+
+    public void setRAM(String RAM) {
+        this.RAM = RAM;
+    }
+
+    public double getCPU() {
+        return CPU;
+    }
+
+    public void setCPU(double CPU) {
+        this.CPU = CPU;
+    }
+
+    public IEstado getState() {
+        return state;
+    }
+
+    public void setState(IEstado state) {
+        this.state = state;
+    }
+
+    public void request() throws InterruptedException {
+        this.state.handle(this);
     }
 }
