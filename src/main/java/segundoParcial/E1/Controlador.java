@@ -10,7 +10,7 @@ public class Controlador {
         stateList.add(m);
     }
 
-    public Memento getVersion(int position){
-        return stateList.get(position);
+    public Memento getVersion(int nroCambios){
+        return stateList.get(stateList.size() - nroCambios);
     }
 }
